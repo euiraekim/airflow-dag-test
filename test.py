@@ -1,6 +1,6 @@
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
-from airflow.operators import PythonOperator
+from airflow.operators.python import PythonOperator
 from airflow.contrib.operators.ssh_operator import SSHOperator
 from datetime import datetime
 
