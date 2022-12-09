@@ -19,7 +19,7 @@ t2 = SSHOperator(
 
 def access_redshift():
     conn = redshift_connector.connect(
-            host='redshift-test.cyernhele58c.ap-northeast-2.redshift.amazonaws.com:5439',
+            host='redshift-test.cyernhele58c.ap-northeast-2.redshift.amazonaws.com',
             database='redshift_test',
             user='testuser',
             password='Testpw1234')
