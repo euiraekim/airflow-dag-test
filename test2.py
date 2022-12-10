@@ -29,7 +29,7 @@ def get_postgresql_conn():
             print(e)
 
 def query(ds):
-    insert_query = f"insert into sign_up_count values ('{ds}');"
+    insert_query = "insert into sign_up_count values ('{}');".format(ds)
 
     select_query = """
         select * from sign_up_count;
