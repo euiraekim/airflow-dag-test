@@ -28,8 +28,8 @@ def get_postgresql_conn():
         except Exception as e:
             print(e)
 
-def query():
-    insert_query = "insert into sign_up_count values ('aaa');"
+def query(ds):
+    insert_query = f"insert into sign_up_count values ('{ds}');"
 
     select_query = """
         select * from sign_up_count;
@@ -48,6 +48,7 @@ def query():
 t3 = PythonOperator(
             task_id = 'query', 
             python_callable = query,
+            op_args=["{{ ds }}"],
             dag = dag
             )
 
