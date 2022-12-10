@@ -28,8 +28,9 @@ def get_postgresql_conn():
         except Exception as e:
             print(e)
 
-def query(ds):
-    insert_query = f"insert into sign_up_count values ('{ds}');"
+
+def query(dt):
+    insert_query = f"insert into sign_up_count values ('{str(dt)}');"
 
     select_query = """
         select * from sign_up_count;
@@ -45,10 +46,12 @@ def query(ds):
         except Exception as e:
             print(e)
 
+dt = datetime.now()
+
 t3 = PythonOperator(
             task_id = 'query', 
             python_callable = query,
-            op_kwargs={ 'ds': '{{ ds }}' },
+            op_kwargs={ 'dt': dt },
             dag = dag
             )
 
