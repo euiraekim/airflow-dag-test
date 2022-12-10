@@ -29,7 +29,7 @@ def get_postgresql_conn():
             print(e)
 
 def query(ds):
-    insert_query = "insert into sign_up_count values ('{}');".format(ds)
+    insert_query = "insert into sign_up_count values ('{}');".format('ds')
 
     select_query = """
         select * from sign_up_count;
@@ -48,7 +48,7 @@ def query(ds):
 t3 = PythonOperator(
             task_id = 'query', 
             python_callable = query,
-            op_args=["{{ ds }}"],
+            op_args=['{{ ds }}'],
             dag = dag
             )
 
