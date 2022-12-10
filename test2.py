@@ -8,9 +8,9 @@ import psycopg2
 
 import redshift_connector
 
-dag = DAG(dag_id="test3_dag",
+dag = DAG(dag_id="test4_dag",
         #start_date = datetime(2022,12,10),
-        start_date = datetime.now(),
+        start_date = datetime(2022, 12, 10, 12, 0),
         schedule_interval = '* * * * *',)
 
 t1 = DummyOperator(
