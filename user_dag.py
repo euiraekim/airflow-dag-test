@@ -8,7 +8,7 @@ import psycopg2
 import redshift_connector
 
 dag = DAG(dag_id="order_processing5",
-        start_date = datetime(2022, 12, 11, 0),
+        start_date = datetime(2022, 12, 11, 5),
         schedule_interval = '30 * * * *',)
 
 start_task = DummyOperator(
@@ -22,6 +22,9 @@ spark_task = SSHOperator(
         task_id='spark-s3-to-redshift',
         ssh_conn_id='emr-spark',
         command=f'spark-submit --jars /usr/share/aws/redshift/jdbc/RedshiftJDBC.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-redshift.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-avro.jar,/usr/share/aws/redshift/spark-redshift/lib/minimal-json.jar /home/hadoop/data-pipeline-with-aws/spark/users_to_redshift.py -dt "{dt}"')
+
+
+
 
 def access_redshift():
     conn = redshift_connector.connect(
