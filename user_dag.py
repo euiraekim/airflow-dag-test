@@ -8,7 +8,7 @@ import psycopg2
 import redshift_connector
 from functions import access_redshift
 
-dag = DAG(dag_id="user_processing2",
+dag = DAG(dag_id="user_processing3",
         start_date = datetime(2022, 12, 11, 6),
         schedule_interval = '30 * * * *',)
 
