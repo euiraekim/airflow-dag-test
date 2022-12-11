@@ -54,12 +54,12 @@ def query(dt):
         except Exception as e:
             print(e)
 
-dt = datetime.now()
+ds = '{{ ds }}'
 
 t3 = PythonOperator(
             task_id = 'query', 
             python_callable = query,
-            op_kwargs={ 'dt': '{{ ds }}' },
+            op_kwargs={ 'dt': ds },
             dag = dag
             )
 
