@@ -54,7 +54,7 @@ def query(dt):
         except Exception as e:
             print(e)
 
-ds = '{{ ts.strftime("%m-%d %H:%M:%S") }}'
+ds = '{{ execution_date.strftime("%m-%d %H:%M:%S") }}'
 
 t3 = PythonOperator(
             task_id = 'query', 

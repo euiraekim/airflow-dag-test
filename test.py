@@ -7,7 +7,7 @@ from datetime import datetime
 import psycopg2
 import redshift_connector
 
-dag = DAG(dag_id="order_processing3",
+dag = DAG(dag_id="order_processing4",
         start_date = datetime(2022, 12, 11, 0),
         schedule_interval = '30 * * * *',)
 
@@ -21,7 +21,7 @@ start_task = DummyOperator(
 spark_task = SSHOperator(
         task_id='spark-s3-to-redshift',
         ssh_conn_id='emr-spark',
-        command='spark-submit --jars /usr/share/aws/redshift/jdbc/RedshiftJDBC.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-redshift.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-avro.jar,/usr/share/aws/redshift/spark-redshift/lib/minimal-json.jar /home/hadoop/data-pipeline-with-aws/spark/users_to_redshift.py -dt {{ ts.strftime("%Y-%m-%d %H:%M:%S") }}')
+        command='spark-submit --jars /usr/share/aws/redshift/jdbc/RedshiftJDBC.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-redshift.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-avro.jar,/usr/share/aws/redshift/spark-redshift/lib/minimal-json.jar /home/hadoop/data-pipeline-with-aws/spark/users_to_redshift.py -dt {{ execution_date.strftime("%Y-%m-%d %H:%M:%S") }}')
 
 def access_redshift():
     conn = redshift_connector.connect(
