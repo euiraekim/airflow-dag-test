@@ -16,12 +16,12 @@ start_task = DummyOperator(
                 dag=dag)
 
 
-#dt = {{ ts.strftime('%Y-%m-%d %H:%M:%S') }}
+dt = {{ execution_date.strftime('%Y-%m-%d %H:%M:%S') }}
 
 spark_task = SSHOperator(
         task_id='spark-s3-to-redshift',
         ssh_conn_id='emr-spark',
-        command='spark-submit --jars /usr/share/aws/redshift/jdbc/RedshiftJDBC.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-redshift.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-avro.jar,/usr/share/aws/redshift/spark-redshift/lib/minimal-json.jar /home/hadoop/data-pipeline-with-aws/spark/users_to_redshift.py -dt {{ execution_date.strftime("%Y-%m-%d %H:%M:%S") }}')
+        command=f'spark-submit --jars /usr/share/aws/redshift/jdbc/RedshiftJDBC.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-redshift.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-avro.jar,/usr/share/aws/redshift/spark-redshift/lib/minimal-json.jar /home/hadoop/data-pipeline-with-aws/spark/users_to_redshift.py -dt {dt}')
 
 def access_redshift():
     conn = redshift_connector.connect(
