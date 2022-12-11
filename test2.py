@@ -37,7 +37,7 @@ def get_dt_str(ts):
     return dt_str
 
 def query(dt):
-    #dt = datetime.fromisoformat(dt).strftime("%Y-%m-%d %H:%M:%S")
+    dt = datetime.fromisoformat(dt).strftime("%Y-%m-%d %H:%M:%S")
     insert_query = f"insert into sign_up_count values ('{dt}');"
 
     select_query = """
@@ -59,7 +59,7 @@ dt = datetime.now()
 t3 = PythonOperator(
             task_id = 'query', 
             python_callable = query,
-            op_kwargs={ 'dt': get_dt_str("{{ ts }}") },
+            op_kwargs={ 'dt': "{{ dt }}") },
             dag = dag
             )
 
