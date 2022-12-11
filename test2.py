@@ -54,7 +54,7 @@ dt = datetime.now()
 t3 = PythonOperator(
             task_id = 'query', 
             python_callable = query,
-            op_kwargs={ 'dt': dt },
+            op_kwargs={ 'dt': '{{ ts }}' },
             dag = dag
             )
 
