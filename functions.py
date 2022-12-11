@@ -32,8 +32,11 @@ def access_redshift():
 
     with conn.cursor() as cursor:
         try:
-            cursor.execute("insert into users values (3, 'cc')")
+            cursor.execute("insert into test values (3, 'cc')")
             #rows = cursor.fetchall()
             #print('rows'+ str(rows))
         except Exception as e:
             print(e)
+
+
+access_redshift()
