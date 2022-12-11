@@ -37,6 +37,3 @@ def access_redshift():
             #print('rows'+ str(rows))
         except Exception as e:
             print(e)
-
-
-access_redshift()
