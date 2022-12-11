@@ -28,7 +28,7 @@ def get_postgresql_conn():
 
 
 def access_redshift():
-    conn = get_postgresql_conn()
+    conn = get_redshift_conn()
 
     with conn.cursor() as cursor:
         try:
