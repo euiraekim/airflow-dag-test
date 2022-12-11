@@ -31,11 +31,14 @@ def get_postgresql_conn():
         except Exception as e:
             print(e)
 
-ts = "{{ ts }}"
-dt_str = datetime.fromisoformat(ts).strftime('%Y-%m-%d %H:%M:%S')
+
+def get_dt_str(ts):
+    dt_str = datetime.fromisoformat(ts).strftime('%Y-%m-%d %H:%M:%S')
+    return dt_str
+
 def query(dt):
-    dt = datetime.fromisoformat(dt).strftime("%Y-%m-%d %H:%M:%S")
-    insert_query = f"insert into sign_up_count values ('{dt_str}');"
+    #dt = datetime.fromisoformat(dt).strftime("%Y-%m-%d %H:%M:%S")
+    insert_query = f"insert into sign_up_count values ('{dt}');"
 
     select_query = """
         select * from sign_up_count;
@@ -56,7 +59,7 @@ dt = datetime.now()
 t3 = PythonOperator(
             task_id = 'query', 
             python_callable = query,
-            op_kwargs={ 'dt': '{{ ts }}' },
+            op_kwargs={ 'dt': '{{ get_dt_str(ts) }}' },
             dag = dag
             )
 
