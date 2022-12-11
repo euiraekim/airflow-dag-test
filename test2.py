@@ -31,10 +31,10 @@ def get_postgresql_conn():
         except Exception as e:
             print(e)
 
-
+dt_str = "{{ datetime.fromisoformat(ts).strftime('%Y-%m-%d %H:%M:%S') }}"
 def query(dt):
     dt = datetime.fromisoformat(dt).strftime("%Y-%m-%d %H:%M:%S")
-    insert_query = f"insert into sign_up_count values ('{str(dt)}');"
+    insert_query = f"insert into sign_up_count values ('{dt_str}');"
 
     select_query = """
         select * from sign_up_count;
