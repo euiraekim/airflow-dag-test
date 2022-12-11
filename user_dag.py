@@ -46,4 +46,10 @@ t3 = PythonOperator(
             dag = dag
             )
 
-start_task >> spark_task
+t4 = PythonOperator(
+            task_id = 'ar',
+            python_callable = access_redshift,
+            dag = dag
+            )
+
+start_task >> t3 >> t4
