@@ -1,14 +1,16 @@
-from connection import get_redshift_conn, get_postgresql_conn
+from functions import get_redshift_conn, get_postgresql_conn
 
 insert_query = "insert into sign_up_count values ('aaa');"
 
 select_query = """
-    select * from sign_up_count;
+    select * from test;
 """
 
-conn = get_postgresql_conn()
+redshift_conn = get_redshift_conn()
 
-with conn.cursor() as cursor:
+postgresql_conn = get_postgresql_conn()
+
+with redshift_conn.cursor() as cursor:
     try:
         cursor.execute(select_query)
         rows = cursor.fetchall()
