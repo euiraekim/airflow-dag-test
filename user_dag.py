@@ -31,4 +31,4 @@ t3 = PythonOperator(
             dag = dag
             )
 
-start_task >> t3
+start_task >> spark_task

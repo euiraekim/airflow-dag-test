@@ -18,7 +18,6 @@ start_task = DummyOperator(
 
 
 dt = "{{ execution_date.strftime('%Y-%m-%d %H:%M:%S') }}"
-
 spark_task = SSHOperator(
         task_id='spark-s3-to-redshift',
         ssh_conn_id='emr-spark',
@@ -32,4 +31,4 @@ t3 = PythonOperator(
             dag = dag
             )
 
-start_task >> t3
+start_task >> spark_task
