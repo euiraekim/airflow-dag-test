@@ -6,8 +6,9 @@ from airflow.contrib.operators.ssh_operator import SSHOperator
 from datetime import datetime
 import psycopg2
 import redshift_connector
+from functions import access_redshift as ar
 
-dag = DAG(dag_id="order_processing5",
+dag = DAG(dag_id="user_processing",
         start_date = datetime(2022, 12, 11, 5),
         schedule_interval = '30 * * * *',)
 
