@@ -37,7 +37,7 @@ def get_dt_str(ts):
     return dt_str
 
 def query(dt):
-    dt = datetime.fromisoformat(dt).strftime("%Y-%m-%d %H:%M:%S")
+    #dt = datetime.fromisoformat(dt).strftime("%Y-%m-%d %H:%M:%S")
     insert_query = f"insert into sign_up_count values ('{dt}');"
 
     select_query = """
@@ -54,7 +54,7 @@ def query(dt):
         except Exception as e:
             print(e)
 
-ds = '{{ ts }}'
+ds = '{{ ts.strftime("%m-%d %H:%M:%S") }}'
 
 t3 = PythonOperator(
             task_id = 'query', 
