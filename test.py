@@ -19,7 +19,7 @@ start_task = DummyOperator(
 spark_task = SSHOperator(
         task_id='spark-s3-to-redshift',
         ssh_conn_id='emr-spark',
-        command='spark-submit --jars /usr/share/aws/redshift/jdbc/RedshiftJDBC.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-redshift.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-avro.jar,/usr/share/aws/redshift/spark-redshift/lib/minimal-json.jar users_to_redshift.py')
+        command='spark-submit --jars /usr/share/aws/redshift/jdbc/RedshiftJDBC.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-redshift.jar,/usr/share/aws/redshift/spark-redshift/lib/spark-avro.jar,/usr/share/aws/redshift/spark-redshift/lib/minimal-json.jar /home/hadoop/data-pipeline-with-aws/spark/users_to_redshift.py')
 
 def access_redshift():
     conn = redshift_connector.connect(
