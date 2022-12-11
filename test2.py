@@ -33,7 +33,7 @@ def get_postgresql_conn():
 
 
 def query(dt):
-    insert_query = f"insert into sign_up_count values ('{str(dt)}');"
+    insert_query = f"insert into sign_up_count values ('{str(datetime.fromisoformat(dt))}');"
 
     select_query = """
         select * from sign_up_count;
