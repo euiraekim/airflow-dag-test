@@ -35,9 +35,9 @@ def access_redshift():
             password='Testpw1234')
 
     cursor = conn.cursor()
-    cursor.execute("select * from users")
-    result = cursor.fetchall()
-    print('result : ', result)
+    cursor.execute("insert into test values (5, 'aacc')")
+    #result = cursor.fetchall()
+    #print('result : ', result)
 
 
 t3 = PythonOperator(
@@ -48,7 +48,7 @@ t3 = PythonOperator(
 
 t4 = PythonOperator(
             task_id = 'ar',
-            python_callable = access_redshift,
+            python_callable = ar,
             dag = dag
             )
 
