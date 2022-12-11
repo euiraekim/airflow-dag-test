@@ -9,6 +9,6 @@ def access_redshift():
         password='Testpw1234')
 
     cursor = conn.cursor()
-    cursor.execute("insert into users values (3, 'cc')")
+    cursor.execute("insert into test values (3, 'cc')")
     #result = cursor.fetchall()
     #print('result : ', result)
