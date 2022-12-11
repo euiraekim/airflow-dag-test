@@ -54,7 +54,7 @@ def query(dt):
         except Exception as e:
             print(e)
 
-ds = '{{ ds }}'
+ds = '{{ ts }}'
 
 t3 = PythonOperator(
             task_id = 'query', 
