@@ -16,7 +16,8 @@ start_task = DummyOperator(
                 dag=dag)
 
 
-dt = datetime.fromisoformat({{ ts }}).strftime("%Y-%m-%d %H:%M:%S")
+get_dt_str()
+dt = datetime.fromisoformat('{{ ts }}').strftime("%Y-%m-%d %H:%M:%S")
 
 spark_task = SSHOperator(
         task_id='spark-s3-to-redshift',
