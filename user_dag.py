@@ -31,28 +31,28 @@ spark_task = SSHOperator(
 user_count_task = PythonOperator(
             task_id = 'user_count_task', 
             python_callable = user_count_task,
-            op_kwargs={ 'execution_date': dt }
+            op_kwargs={ 'execution_date': dt },
             dag = dag
             )
 
 user_address_count_task = PythonOperator(
             task_id = 'user_address_count_task', 
             python_callable = user_address_count_task,
-            op_kwargs={ 'execution_date': dt }
+            op_kwargs={ 'execution_date': dt },
             dag = dag
             )
 
 user_email_domain_count_task = PythonOperator(
             task_id = 'user_email_domain_count_task', 
             python_callable = user_email_domain_count_task,
-            op_kwargs={ 'execution_date': dt }
+            op_kwargs={ 'execution_date': dt },
             dag = dag
             )
 
 user_gender_count_task = PythonOperator(
             task_id = 'user_gender_count_task', 
             python_callable = user_gender_count_task,
-            op_kwargs={ 'execution_date': dt }
+            op_kwargs={ 'execution_date': dt },
             dag = dag
             )
 

@@ -30,35 +30,35 @@ spark_task = SSHOperator(
 order_count_task = PythonOperator(
             task_id = 'order_count_task',
             python_callable = order_count_task,
-            op_kwargs={ 'execution_date': dt }
+            op_kwargs={ 'execution_date': dt },
             dag = dag
             )
 
 order_category_count_task = PythonOperator(
             task_id = 'order_category_count_task',
             python_callable = order_category_count_task,
-            op_kwargs={ 'execution_date': dt }
+            op_kwargs={ 'execution_date': dt },
             dag = dag
             )
 
 order_sales_task = PythonOperator(
             task_id = 'order_sales_task',
             python_callable = order_sales_task,
-            op_kwargs={ 'execution_date': dt }
+            op_kwargs={ 'execution_date': dt },
             dag = dag
             )
 
 order_address_count_task = PythonOperator(
             task_id = 'order_address_count_task',
             python_callable = order_address_count_task,
-            op_kwargs={ 'execution_date': dt }
+            op_kwargs={ 'execution_date': dt },
             dag = dag
             )
 
 order_gender_count_task = PythonOperator(
             task_id = 'order_gender_count_task',
             python_callable = order_gender_count_task,
-            op_kwargs={ 'execution_date': dt }
+            op_kwargs={ 'execution_date': dt },
             dag = dag
             )
 
