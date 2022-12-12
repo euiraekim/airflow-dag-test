@@ -9,7 +9,7 @@ import redshift_connector
 from functions import access_redshift
 
 dag = DAG(dag_id="user_processing",
-        start_date = datetime(2022, 12, 12, 2),
+        start_date = datetime(2022, 12, 12, 1),
         schedule_interval = '10 * * * *',)
 
 start_task = DummyOperator(
