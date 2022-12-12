@@ -12,7 +12,7 @@ from functions import (
             order_gender_count_task
         )
 
-dag = DAG(dag_id="order_processing",
+dag = DAG(dag_id="order_processing2",
         start_date = datetime(2022, 12, 12, 6),
         schedule_interval = '5 * * * *',)
 
