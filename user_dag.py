@@ -11,9 +11,12 @@ from functions import (
             user_gender_count_task
         )
 
-dag = DAG(dag_id="user_processing2",
-        start_date = datetime(2022, 12, 12, 6),
-        schedule_interval = '5 * * * *',)
+dag = DAG(dag_id="user_processing3",
+            start_date = datetime(2022, 12, 12, 6),
+            schedule_interval = '5 * * * *',
+            max_active_runs=1,
+            max_active_tasks=1
+        )
 
 start_task = DummyOperator(
                 task_id="start_task",
