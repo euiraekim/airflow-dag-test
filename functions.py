@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import redshift_connector
 import psycopg2
 
+
 def get_redshift_conn():
     try:
         conn = redshift_connector.connect(
@@ -55,10 +56,12 @@ def select_query(query, db):
             print(e)
 
 
+
 def get_query_dt(execution_date):
     dt = datetime.strptime(execution_date, '%Y-%m-%d %H:%M:%S')
     dt = dt.replace(minute=0, second=0)
     return dt
+
 
 def user_count_task(execution_date):
     dt = get_query_dt(execution_date)
@@ -92,6 +95,7 @@ def user_address_count_task(execution_date):
         """
         insert_query(postgresql_query, 'postgresql')
 
+
 def user_email_domain_count_task(execution_date):
     dt = get_query_dt(execution_date)
 
@@ -107,6 +111,7 @@ def user_email_domain_count_task(execution_date):
             VALUES ('{dt}', '{row[0]}', {row[1]})
         """
         insert_query(postgresql_query, 'postgresql')
+
 
 def user_gender_count_task(execution_date):
     dt = get_query_dt(execution_date)
@@ -157,6 +162,7 @@ def order_category_count_task(execution_date):
         """
         insert_query(postgresql_query, 'postgresql')
 
+
 def order_sales_task(execution_date):
     dt = get_query_dt(execution_date)
 
@@ -171,6 +177,7 @@ def order_sales_task(execution_date):
             VALUES ('{dt}', {row[0]})
         """
         insert_query(postgresql_query, 'postgresql')
+
 
 def order_address_count_task(execution_date):
     dt = get_query_dt(execution_date)
@@ -204,15 +211,3 @@ def order_gender_count_task(execution_date):
             VALUES ('{dt}', '{row[0]}', {row[1]})
         """
         insert_query(postgresql_query, 'postgresql')
-
-
-#execution_date = '2022-12-12 08:10:00'
-#user_count_task(execution_date)
-#user_address_count_task(execution_date)
-#user_email_domain_count_task(execution_date)
-#user_gender_count_task(execution_date)
-#order_count_task(execution_date)
-#order_category_count_task(execution_date)
-#order_sales_task(execution_date)
-#order_address_count_task(execution_date)
-#order_gender_count_task(execution_date)
